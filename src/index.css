@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font-display: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Palette - bubblegum theme */
+  --color-deep-sky-blue: #2ec0f9;
+  --color-emerald: #63d471;
+  --color-orange: #f9a620;
+  --color-soft-periwinkle: #8e7dbe;
+  --color-strawberry-red: #ff0035;
+
+  --color-bg: #fdf5ff;
+  --color-periwinkle: #8e7dbe;
+  --color-blue: #2ec0f9;
+  --color-emerald: #63d471;
+  --color-orange: #f9a620;
+  --color-red: #ff0035;
+}
+
+body {
+  font-family: var(--font-display);
+  background-color: var(--color-bg);
+  color: #4a3a5a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom cursor - only on devices with pointer */
+@media (pointer: fine) {
+  body.custom-cursor-active {
+    cursor: none;
+  }
+}
+
+#root {
+  min-height: 100vh;
+}
