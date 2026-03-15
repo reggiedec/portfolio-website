@@ -4,10 +4,10 @@ import { useGLTF, Html } from "@react-three/drei";
 import { useMotionValue, animate } from "framer-motion";
 import * as THREE from "three";
 import type { Project } from "../data/projects";
-import { GalaxyPoints } from "./GalaxyPoints";
+import { asset } from "../utils/asset";
 
-useGLTF.preload("/models/gameboy_cartridge/scene.gltf");
-useGLTF.preload("/models/sims_4_emotion_plumbobs/scene.gltf");
+useGLTF.preload(asset("/models/gameboy_cartridge/scene.gltf"));
+useGLTF.preload(asset("/models/sims_4_emotion_plumbobs/scene.gltf"));
 
 interface ProjectCartridgeProps {
   project: Project;
@@ -52,8 +52,8 @@ export function ProjectCartridge({
   const groupRef = useRef<THREE.Group>(null);
   const plumbobRef = useRef<THREE.Group>(null);
 
-  const gameboy = useGLTF("/models/gameboy_cartridge/scene.gltf");
-  const plumbobsScene = useGLTF("/models/sims_4_emotion_plumbobs/scene.gltf");
+  const gameboy = useGLTF(asset("/models/gameboy_cartridge/scene.gltf"));
+  const plumbobsScene = useGLTF(asset("/models/sims_4_emotion_plumbobs/scene.gltf"));
   const [labelTexture, setLabelTexture] = useState<THREE.Texture | null>(null);
 
   const floatPosition = GALLERY_POSITIONS[index];
@@ -90,7 +90,7 @@ export function ProjectCartridge({
       tex.magFilter = THREE.LinearFilter;
       setLabelTexture(tex);
     };
-    img.src = thumb;
+    img.src = thumb.startsWith("http") ? thumb : asset(thumb);
   }, [project.thumbnail, project.id]);
 
   useFrame((state) => {
@@ -122,10 +122,8 @@ export function ProjectCartridge({
   }, [sceneClone, labelTexture]);
 
   const plumbobColor = project.plumbobColor ?? project.color;
-  const isMedSyn = project.id === "04";
 
   const plumbobMesh = useMemo(() => {
-    if (isMedSyn) return null;
     const meshes: THREE.Mesh[] = [];
     plumbobsScene.scene.traverse((child) => {
       if (child instanceof THREE.Mesh) meshes.push(child);
@@ -141,7 +139,7 @@ export function ProjectCartridge({
       mesh.material = mat;
     }
     return mesh;
-  }, [plumbobsScene.scene, plumbobColor, index, isMedSyn]);
+  }, [plumbobsScene.scene, plumbobColor, index]);
 
   return (
     <group ref={groupRef}>
@@ -178,11 +176,6 @@ export function ProjectCartridge({
         <primitive object={sceneClone} scale={GAMEBOY_SCALE} />
       </group>
 
-      {!isInserted && isMedSyn && (
-        <group ref={plumbobRef} position={[0, PLUMBOB_OFFSET, 0]} rotation={[Math.PI / 2, 0, 0]}>
-          <GalaxyPoints color={plumbobColor} />
-        </group>
-      )}
       {!isInserted && plumbobMesh && (
         <group ref={plumbobRef} position={[0, PLUMBOB_OFFSET, 0]} rotation={[Math.PI / 2, 0, 0]}>
           <primitive object={plumbobMesh} scale={PLUMBOB_SCALE} />

@@ -4,6 +4,7 @@ import { RoundedBox } from "@react-three/drei";
 import { useMotionValue, animate } from "framer-motion";
 import * as THREE from "three";
 import type { Project } from "../data/projects";
+import { asset } from "../utils/asset";
 
 function useVideoTexture(videoUrl: string | undefined): THREE.VideoTexture | null {
   const [texture, setTexture] = useState<THREE.VideoTexture | null>(null);
@@ -100,7 +101,8 @@ export function HandheldConsole({
   const [screenPhase, setScreenPhase] = useState<ScreenPhase>("boot");
   const [thumbnailTexture, setThumbnailTexture] = useState<THREE.Texture | null>(null);
 
-  const videoPath = selectedProject?.video ?? selectedProject?.videoUrl;
+  const rawVideo = selectedProject?.video ?? selectedProject?.videoUrl;
+  const videoPath = rawVideo ? (rawVideo.startsWith("http") ? rawVideo : asset(rawVideo)) : undefined;
   const videoTexture = useVideoTexture(
     isCartridgeInserted && selectedProject && videoPath ? videoPath : undefined
   );
@@ -123,7 +125,7 @@ export function HandheldConsole({
         setThumbnailTexture(tex);
       };
       img.onerror = () => setThumbnailTexture(null);
-      img.src = thumb;
+      img.src = thumb.startsWith("http") ? thumb : asset(thumb);
     } else {
       setThumbnailTexture(null);
     }

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import type { Project } from "../data/projects";
+import { asset } from "../utils/asset";
 import { TraceabilityDiagram } from "./TraceabilityDiagram";
 import { MedSynDiagram } from "./MedSynDiagram";
 
@@ -106,7 +107,7 @@ export function ProjectDetailPanel({
           ) : project.thumbnail ? (
             <div className="project-system-default">
               <img
-                src={project.thumbnail}
+                src={project.thumbnail.startsWith("http") ? project.thumbnail : asset(project.thumbnail)}
                 alt={project.title}
                 className="project-thumbnail"
               />

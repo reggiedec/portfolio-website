@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import type { Project } from "../data/projects";
+import { asset } from "../utils/asset";
 
 const ExternalLinkIcon = () => (
   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -20,7 +21,8 @@ export function ProjectFooter({ project, accentColor, onClose }: ProjectFooterPr
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  const videoPath = project.video ?? project.videoUrl;
+  const rawVideo = project.video ?? project.videoUrl;
+  const videoPath = rawVideo ? (rawVideo.startsWith("http") ? rawVideo : asset(rawVideo)) : undefined;
   const links = project.links ?? (project.link ? [{ label: "VIEW FULL PROJECT", url: project.link }] : []);
 
   const toggleFullscreen = () => {
