@@ -3,134 +3,222 @@ export interface ProjectLink {
   url: string;
 }
 
+export type ProjectIcon =
+  | "wrench"
+  | "cross"
+  | "vr"
+  | "bag"
+  | "brain"
+  | "leaf"
+  | "controller";
+
 export interface Project {
   id: string;
+  index: string;
   title: string;
+  subtitle?: string;
+  year: string;
+  type: string;
+  role?: string;
+  status?: "ongoing" | "shipped" | "research" | "archived";
   description: string;
-  challenge: string;
-  intervention: string;
-  impact: string;
-  hciAngle?: string;
-  type?: string;
+  challenge?: string;
+  intervention?: string;
+  impact?: string;
+  notes?: string[];
   thumbnail?: string;
   video?: string;
-  videoUrl?: string;
-  bgmUrl?: string;
   tags: string[];
-  year: string;
-  color: string;
-  plumbobColor?: string;
-  link?: string;
   links?: ProjectLink[];
-  hasSystemDiagram?: boolean;
-  hasMedSynArchitecture?: boolean;
+  featured?: boolean;
+  icon?: ProjectIcon;
 }
 
 export const projects: Project[] = [
   {
-    id: "01",
-    title: "AISLE GUIDE",
-    color: "#2ec0f9",
-    type: "MHCI // PHYSICAL COMPUTING",
+    id: "asa-erp",
+    index: "01",
+    title: "aSa — Data Distribution Bridge",
+    subtitle: "A contextual, event-driven mobile extension for a desktop ERP that runs the steel yard",
+    year: "Jan 2026 — present",
+    type: "MHCI Capstone · Applied Systems Associates",
+    role: "Technical Designer",
+    status: "ongoing",
+    description:
+      "Pitched, scoped, and designed a mobile system that doesn't try to be the desktop ERP — it bridges the desktop to the people, scanners, and forklifts that operate in its blind spots.",
+    challenge:
+      "aSa runs the back-office for industrial steel — every cut, every stack, every weight ticket. But the yard runs on radios, paper, and shadow spreadsheets. A 1:1 mobile port would just move the friction. The real problem is the dead zones — physical Wi-Fi dead zones and digital ones, where software state and shop-floor reality stop talking to each other.",
+    intervention:
+      "Shifted the product strategy from feature-replication to a contextual, event-driven Data Distribution Bridge. Specified offline-first data queues and REST API payload structures so ruggedized Zebra Android scanners keep working in severe Wi-Fi dead zones. Translated generative field research into technical requirements, mapping the exact breakdowns between digital state and physical \"information dead ends\" into targeted, role-specific interfaces. Validated future-state flows through bodystorming and rapid prototyping with foremen, yard operators, and engineering stakeholders.",
+    impact:
+      "Secured immediate stakeholder buy-in with a 97% evaluation score on a two-way communication loop that intercepts user errors at the edge and protects backend WIP data integrity. Demonstrated how the mobile system eliminates manual radio chatter and shadow spreadsheets without disrupting the legacy data model.",
+    notes: [
+      "Generative field research at active steel yards and fabrication floors",
+      "Strategy shift: 1:1 feature replication → event-driven Data Distribution Bridge",
+      "Offline-first data queues + REST payload spec for ruggedized Zebra scanners",
+      "Bodystormed and rapid-prototyped future-state flows with foremen and yard ops",
+      "Two-way error-intercept loop protecting backend WIP integrity (97% stakeholder eval)",
+      "Role-specific UI primitives mapped to physical \"information dead ends\"",
+    ],
+    tags: [
+      "Technical Design",
+      "Enterprise ERP",
+      "Offline-First",
+      "Field Research",
+      "Bodystorming",
+      "REST APIs",
+    ],
+    featured: true,
+    icon: "wrench",
+  },
+  {
+    id: "medsyn",
+    index: "02",
+    title: "MedSyn",
+    subtitle: "Generative AI for radiology training",
+    year: "2024 — ongoing",
+    type: "Research · CMU Data Interaction Group",
+    role: "Research assistant",
+    status: "research",
+    description:
+      "A human-centered generative AI platform for text-to-3D CT scan synthesis, built to give radiology trainees safe access to rare and edge-case anatomy.",
+    challenge:
+      "Radiology training is bottlenecked by case availability. The interesting pathologies — the ones a resident has to recognize on call at 3am — are exactly the ones they rarely see.",
+    intervention:
+      "Engineered preprocessing pipelines in Python to organize real radiology data for model evaluation. Ran interface testing on an open-source GenAI radiology viewer, integrating synthetic CT outputs into existing diagnostic workflows so the tool meets clinicians where they already work.",
+    impact:
+      "Synthetic scans now feed into prototype educational workflows. Contributing to a publication track on responsible synthetic data in clinical education.",
+    tags: ["Generative AI", "Medical Imaging", "Research", "Python"],
+    featured: true,
+    icon: "cross",
+  },
+  {
+    id: "transformational-games",
+    index: "03",
+    title: "Failure & Iteration in Transformational Games",
+    subtitle: "Independent study, CMU",
+    year: "Jan 2026 — present",
+    type: "Research · Independent Study",
+    role: "Game researcher",
+    status: "research",
+    description:
+      "A multidisciplinary independent study evaluating whether well-designed games can change how students relate to failure.",
+    challenge:
+      "Students learn to avoid failure long before they learn to use it. The hypothesis: structured play might be one of the few places where iteration feels like progress instead of punishment.",
+    intervention:
+      "Designed the full research lifecycle — IRB approval, study design, mixed-methods analysis. Ran workshops with production and prototyping teams to translate findings back into the game's design.",
+    impact:
+      "Cleaned datasets and analysis reports feeding both academic dissemination and the next prototype cycle.",
+    tags: ["Games Research", "IRB", "Mixed Methods", "Education"],
+    icon: "controller",
+  },
+  {
+    id: "terratopia",
+    index: "04",
+    title: "Terratopia",
+    subtitle: "A VR climate game where you play as a dolphin",
+    year: "Jan 2026 — present",
+    type: "Research · CMU Auditory Lab",
+    role: "Game researcher & Unreal developer",
+    status: "ongoing",
+    description:
+      "Game research and Unreal development on Terratopia, a single-player VR experience built inside Prof. Laurie Heller's Auditory Lab — players swim as a dolphin, hunt with echolocation, and watch a coastal ecosystem collapse under climate change.",
+    challenge:
+      "Climate communication keeps trying to scale 'awareness' from a textbook. Terratopia takes the opposite bet: drop a player inside a dolphin's body, give them echolocation, and quietly destroy their habitat with a red tide. The hard problem is making the system legible enough to feel like a game and honest enough to feel like climate science.",
+    intervention:
+      "Game-tested across every stage of development. Collaborated with Portuguese students on the PT-PT localization of the tutorial, narrative, and ending video. Worked in Unreal Engine — extended the existing Blueprints to implement a runtime restart button so playtesters could replay specific scenes without rebooting the entire VR session.",
+    impact:
+      "Tightened playtest cycles for the lab team. The PT-PT build now plays end-to-end with full European Portuguese narration across the mangrove → red tide → restoration arc.",
+    notes: [
+      "Unreal Engine — extended existing Blueprints with a runtime restart button used in playtests",
+      "Game testing across tutorial, mangrove, red tide, and ending sequences",
+      "PT-PT (European Portuguese) localization in collaboration with Portuguese students",
+      "Audio-first design: head-tracked navigation + echolocation hunting on Quest",
+      "Climate narrative scaffolding — mangroves, harmful algae blooms, restoration",
+    ],
+    tags: [
+      "Game Research",
+      "Unreal Blueprints",
+      "VR",
+      "Audio Design",
+      "Localization",
+      "Climate",
+    ],
+    featured: true,
+    icon: "vr",
+  },
+  {
+    id: "aisleguide",
+    index: "05",
+    title: "Aisle Guide",
+    subtitle: "Handheld navigation for big-box retail",
     year: "2026",
+    type: "MHCI · Physical Computing",
     video: "/videos/aisleguide.mov",
     description:
-      "An intelligent handheld navigation assistant for complex retail environments like Target.",
+      "An intelligent handheld assistant for navigating stores like Target without ever pulling out your phone.",
     challenge:
-      "Shoppers experience cognitive overload in large stores, often relying on phones that interrupt the physical experience.",
+      "Big-box retail is cognitively expensive. Shoppers default to their phones, which pulls them out of the physical store and disproportionately fails older or visually impaired customers.",
     intervention:
-      "Designed an ergonomic handheld device with tactile buttons and a focused directional interface using Onshape CAD.",
+      "Ergonomic handheld device with tactile buttons and a directional, peripheral-vision interface. Modeled in Onshape, prototyped in foam and PLA, paired with a deliberately minimal screen.",
     impact:
-      "Reduced navigation friction and improved accessibility for elderly and visually impaired shoppers.",
-    tags: ["Physical Computing", "CAD", "Retail UX"],
-    plumbobColor: "#2ec0f9",
+      "Reduced wayfinding friction in user testing, particularly for shoppers who find smartphone-first navigation hostile.",
+    tags: ["Physical Computing", "Industrial Design", "Accessibility", "CAD"],
     links: [
-      { label: "FIGMA PRESENTATION", url: "https://www.figma.com/deck/Iy0nH1S7dC43sURfmqtpCY" },
+      { label: "Figma presentation", url: "https://www.figma.com/deck/Iy0nH1S7dC43sURfmqtpCY" },
       {
-        label: "ONSHAPE CAD MODEL",
+        label: "Onshape CAD model",
         url: "https://cad.onshape.com/documents/61f14173942e163245599c3f/w/83ab97071730047b05943b41/e/cfdb70002d466332a8de8ab9",
       },
     ],
+    featured: true,
+    icon: "bag",
   },
   {
-    id: "02",
-    title: "COGNITIVE LOAD PLAYGROUND",
-    color: "#63d471",
-    type: "MHCI // HUMAN-AI",
+    id: "cognitive-load",
+    index: "06",
+    title: "Cognitive Load Playground",
+    subtitle: "Interfaces that adapt to your mental state",
     year: "2026",
+    type: "MHCI · Human-AI",
     video: "/videos/humanaifinal.mov",
     description:
-      "An experimental testbed exploring how interfaces can dynamically adapt to a user's mental state.",
+      "An experimental testbed for interfaces that read the room — adjusting density, contrast, and pacing to the user's cognitive state in real time.",
     challenge:
-      "Static interfaces don't account for decision fatigue, often overwhelming users during high-stress tasks.",
+      "Static UIs assume a static user. Decision fatigue, anxiety, and time pressure all bend the same interface in different ways, but the interface never bends back.",
     intervention:
-      "Built a GitHub-hosted experimental environment that modifies information density and visual complexity in real-time.",
+      "Built a web-based playground that takes signals about user state and dynamically modulates visual complexity, information density, and affordance prominence.",
     impact:
-      "Provided a framework for designing AI-driven adaptive interfaces that reduce cognitive ergonomics issues.",
-    tags: ["Human-AI", "React", "Research"],
-    plumbobColor: "#63d471",
-    links: [{ label: "GITHUB", url: "https://github.com/reggiedec" }],
+      "A working framework for designing AI-driven adaptive interfaces, and a pile of evidence that 'one UI for all moods' was always a fiction.",
+    tags: ["Human-AI", "React", "Adaptive UI", "Research"],
+    links: [{ label: "GitHub", url: "https://github.com/reggiedec" }],
+    featured: true,
+    icon: "brain",
   },
   {
-    id: "03",
-    title: "aSa ERP MOBILITY",
-    color: "#8e7dbe",
-    type: "MHCI CAPSTONE",
-    year: "2026",
-    video: "/videos/asa_demo.mov",
-    description:
-      "Translating a heavy industrial ERP system into a high-utility mobile framework for field-use.",
-    challenge:
-      "Construction and steel logistics require speed and durability that desktop-first ERPs cannot provide.",
-    intervention:
-      "Streamlined complex industrial workflows into a touch-optimized, high-contrast mobile interface.",
-    impact:
-      "Enabled real-time data synchronization for workers in high-pressure industrial environments.",
-    tags: ["Systems Design", "UX Research", "Mobile"],
-    plumbobColor: "#8e7dbe",
-  },
-  {
-    id: "04",
-    title: "THE DIGITAL LAB // MEDSYN",
-    color: "#8e7dbe",
-    type: "HCI // CLINICAL SYNTHESIS",
-    year: "2024-26",
-    video: "/videos/medsyn_demo.mov",
-    description:
-      "A centralized platform for clinical data synthesis and medical research visualization.",
-    challenge:
-      "Medical professionals are often siloed, making it difficult to synthesize complex patient data and research in real-time.",
-    intervention:
-      "Designed a high-density, data-rich interface (MedSyn) that aggregates disparate medical sources into a unified clinical view.",
-    impact:
-      "Reduced the time required for cross-functional clinical teams to reach a shared understanding of complex patient cases.",
-    hciAngle:
-      "Applying Strategic Design methodologies to the high-stakes world of clinical medicine—treating data as a material that must be traced, synthesized, and made legible for human decision-making.",
-    tags: ["Medical Tech", "Data Visualization", "Clinical Systems"],
-    plumbobColor: "#8e7dbe",
-    hasMedSynArchitecture: true,
-  },
-  {
-    id: "05",
-    title: "CHILEWICH TRACEABILITY",
-    color: "#f9a620",
-    type: "PARSONS CAPSTONE",
+    id: "chilewich",
+    index: "07",
+    title: "Chilewich Traceability",
+    subtitle: "Digital Product Passports for textiles",
     year: "2025",
-    video: "/videos/chilewich_system.mov",
+    type: "Parsons Capstone",
+    role: "Strategic designer",
+    status: "shipped",
     description:
-      "Designing a Digital Product Passport (DPP) system to enable material transparency in textiles.",
+      "A Digital Product Passport (DPP) framework for Chilewich's high-durability hospitality textiles — making material identity legible from loom to landfill.",
     challenge:
-      "High-durability textiles lack visibility once they leave the factory, preventing circular recovery and recycling.",
+      "Once a textile leaves the factory, it disappears from view. Without a way to track material lifecycles, circular recovery and recycling stay theoretical.",
     intervention:
-      "Mapped a Digital Material Identity framework using QR/RFID to track material lifecycles.",
+      "Mapped a Digital Material Identity framework using QR and RFID. Designed the strategic playbook for how a brand commits to material transparency without overstating it.",
     impact:
-      "Established a strategic blueprint for supply chain transparency in the hospitality textile sector.",
-    tags: ["Strategic Design", "Sustainability", "Systems"],
-    plumbobColor: "#f9a620",
-    link: "https://philm755.wixsite.com/chilewichcapstone",
+      "A blueprint for supply chain transparency in hospitality textiles, presented as a final Parsons capstone.",
+    tags: ["Strategic Design", "Sustainability", "Systems", "Supply Chain"],
     links: [
-      { label: "WIX CAPSTONE", url: "https://philm755.wixsite.com/chilewichcapstone" },
+      { label: "Capstone microsite", url: "https://philm755.wixsite.com/chilewichcapstone" },
     ],
-    hasSystemDiagram: true,
+    featured: true,
+    icon: "leaf",
   },
 ];
+
+export const featuredProjects = projects.filter((p) => p.featured);

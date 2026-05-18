@@ -1,43 +1,39 @@
-# Regine Decossard · Portfolio
+# Regine Decossard — Portfolio
 
-Portfolio website for **Regine Decossard** — designer and researcher in the Master of Human-Computer Interaction program at Carnegie Mellon University.
-
-Built with a 3D "Regine-Station" handheld console, project cartridges, and a bubblegum-inspired design system.
+Editorial single-page portfolio for **Regine Decossard** — designer and researcher in the M.S. Human-Computer Interaction program at Carnegie Mellon University.
 
 **Live site:** [reggiedec.github.io/portfolio-website](https://reggiedec.github.io/portfolio-website)
 
-## Features
+## Stack
 
-- **3D Regine-Station Console** – Handheld device with boot sequence, idle state, and live project video on the screen
-- **Project Cartridges** – Five cartridges (Aisle Guide, Cognitive Load, aSa ERP, MedSyn, Chilewich) that snap into the console
-- **Project Footer** – Video player and system links (Figma, Onshape, GitHub, Wix) when a cartridge with video is inserted
-- **About Me & Say Hello** – HUD panels with bio and contact links
-- **Framer Motion** – Spring animations, flash effect on cartridge insert, slide-up footer
+- React 19 + TypeScript + Vite
+- Pure CSS (no framework) — `Instrument Serif` / `Inter` / `JetBrains Mono`
+- Deploys to GitHub Pages via Actions on push to `main`
 
-## Getting Started
+## Editing content
+
+All content lives in `src/data/`:
+
+| File | What it controls |
+|---|---|
+| `src/data/projects.ts` | Selected work (case studies, links, video paths) |
+| `src/data/experience.ts` | Roles, education, "previously with", skills |
+| `src/data/writing.ts` | Writing / editorial / essays list |
+
+Hero copy lives in `src/components/Hero.tsx`. About prose lives in `src/components/AboutSection.tsx`.
+
+## Local dev
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+Open [http://localhost:5173](http://localhost:5173).
 
-## Project Structure
+## Build
 
-- `src/data/projects.ts` – Project data, links, videos
-- `src/components/Scene.tsx` – 3D scene (console, cartridges, desk)
-- `src/components/HandheldConsole.tsx` – Console mesh and screen texture
-- `src/components/ProjectFooter.tsx` – Video player and system links
-- `src/components/ProjectDetailPanel.tsx` – Project spec and metadata
-
-## Tech Stack
-
-- **React** + **TypeScript** + **Vite**
-- **React Three Fiber** + **Three.js** – 3D rendering
-- **@react-three/drei** – OrbitControls, RoundedBox, Environment
-- **Framer Motion** – UI animations
-
-## Deployment
-
-Deploys to GitHub Pages via GitHub Actions on push to `main`. See [.github/workflows/deploy.yml](.github/workflows/deploy.yml).
+```bash
+npm run build
+npm run preview
+```
