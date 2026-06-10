@@ -1307,15 +1307,18 @@
 .pixel-name-row {
   position: relative;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: flex-end;
   gap: 0;
   font-family: var(--font-pixel);
-  font-size: clamp(2.6rem, 6.4vw, 6.4rem);
+  /* Press Start 2P is roughly square per glyph, so 16 chars × font-size
+     must fit the available width. Cap at ~4.6vw so it stays on one line. */
+  font-size: clamp(1.2rem, 4.6vw, 5rem);
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   color: var(--ink);
   padding-top: 0.2em;
+  white-space: nowrap;
 }
 
 .pn-letter {
