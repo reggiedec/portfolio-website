@@ -11,9 +11,9 @@ node_modules
 dist
 dist-ssr
 *.local
-
-# oversized media · exceeds GitHub's 100MB per-file limit · host externally or compress
-public/videos/terratopia.mp4
+.env
+.env.local
+.env.*.local
 
 # stray repo-root resume copies · the canonical one lives in public/
 /Regine_*Resume*.pdf

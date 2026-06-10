@@ -133,7 +133,6 @@ export const projects: Project[] = [
     ],
     highlightTags: ["VR", "Unreal Blueprints", "Game Research"],
     video: "/videos/terratopia.mp4",
-    videoEnd: 30,
     featured: true,
     icon: "vr",
   },

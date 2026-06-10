@@ -32,6 +32,7 @@ jobs:
         run: npm run build
         env:
           GITHUB_PAGES_BASE: /${{ github.event.repository.name }}/
+          VITE_CF_BEACON_TOKEN: ${{ secrets.CF_BEACON_TOKEN }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
