@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 * {
   margin: 0;
@@ -9,10 +9,13 @@
 }
 
 :root {
-  /* Type */
+  /* Type · two families only */
   --font-serif: "Instrument Serif", "Times New Roman", serif;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  /* mono falls back to the sans (with letter-spacing) for label feel */
+  --font-mono: "Inter", system-ui, -apple-system, sans-serif;
+  /* chunky 8-bit display face, used for the hero name */
+  --font-pixel: "Press Start 2P", "VT323", monospace;
 
   /* Paper-and-ink palette */
   --paper: #f1ebe1;
@@ -24,7 +27,7 @@
   --rule: rgba(26, 26, 26, 0.18);
   --rule-soft: rgba(26, 26, 26, 0.08);
 
-  /* Two-tone accent — violet leads, electric blue counterpunches */
+  /* Two-tone accent · violet leads, electric blue counterpunches */
   --accent: #5b3fb8;          /* deep indigo-violet */
   --accent-soft: #5b3fb81a;
   --accent-2: #0ea5e9;        /* electric sky blue */

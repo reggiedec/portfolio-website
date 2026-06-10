@@ -1,6 +1,6 @@
-# Regine Decossard — Portfolio
+# Regine DeCossard — Portfolio
 
-Editorial single-page portfolio for **Regine Decossard** — designer and researcher in the M.S. Human-Computer Interaction program at Carnegie Mellon University.
+Editorial single-page portfolio for **Regine DeCossard** — designer and researcher in the M.S. Human-Computer Interaction program at Carnegie Mellon University.
 
 **Live site:** [reggiedec.github.io/portfolio-website](https://reggiedec.github.io/portfolio-website)
 

@@ -1,4 +1,5 @@
 import { SectionHeader } from "./WorkSection";
+import { PixelIcon } from "./PixelIcon";
 
 export function AboutSection() {
   return (
@@ -13,27 +14,28 @@ export function AboutSection() {
       <div className="about-grid">
         <div className="about-prose">
           <p className="about-lede">
-            I'm a <em>technical designer</em> and{" "}
-            <em>creative technologist</em> trained at Parsons and now in the
-            Master's of Human-Computer Interaction program at Carnegie Mellon.
-            I work where design specs meet runtime — the part of the project
-            where a wireframe has to compile, talk to a database, and survive
-            being held by someone wearing gloves.
+            Hi, I'm <em>Regine DeCossard</em>. I'm a{" "}
+            <span className="highlight">product designer</span> and{" "}
+            <span className="highlight">creative technologist</span>, and I{" "}
+            <em>bring ideas to life</em>.
           </p>
           <p>
-            I came up in strategic design, which taught me to treat "design" as
-            a method instead of an aesthetic. So whether I'm modeling a
-            handheld in Onshape, writing offline-first payload specs for
-            ruggedized Android scanners, building synthetic-data pipelines for
-            radiology training, or mapping a Digital Product Passport for a
-            textile company, I'm asking the same questions:{" "}
-            <em>where does this break, who feels it first, and what do we owe
-            them?</em>
+            Simply put, I love building <em>stories</em>, making <em>games</em>,
+            and creating products that have a real, tangible impact on people.
+            I'm currently completing my <em>Master's in Human-Computer
+            Interaction</em> at Carnegie Mellon. My work lives at the
+            intersection of human-centered design and emerging technology.
           </p>
           <p>
-            Outside of school I keep a backlog of half-built side projects, run
-            research nobody asked me to run, and read more film theory than is
-            reasonable.
+            Whether I'm engineering data pipelines for a{" "}
+            <span className="highlight">generative AI radiology platform</span>,
+            designing interactive 3D environments in{" "}
+            <span className="highlight">Unity</span>, or wiring up{" "}
+            <span className="highlight">Arduino</span> sensors for physical
+            computing projects, I thrive on getting scrappy and prototyping
+            directly in code. I'm incredibly hungry to keep learning, tackle
+            complex problems, and build intuitive experiences that{" "}
+            <em>actually matter</em>.
           </p>
         </div>
 
@@ -47,25 +49,40 @@ export function AboutSection() {
           <div className="about-stat">
             <span className="about-stat-k">▸ Now</span>
             <span className="about-stat-v">
-              Pittsburgh — capstone delivery, research dissemination, and
-              shipping the things I said I'd ship.
+              Pittsburgh · capstone delivery, lab work, and shipping the
+              things I said I'd ship.
             </span>
           </div>
           <div className="about-stat">
             <span className="about-stat-k">▸ Next</span>
             <span className="about-stat-v">
-              Open to product design, HCI research, and human-AI roles starting
-              August 2026.
+              Open to <span className="highlight">product design</span>,{" "}
+              <span className="highlight">HCI research</span>, and{" "}
+              <span className="highlight">human-AI</span> roles starting{" "}
+              <em>August 2026</em>.
             </span>
           </div>
           <div className="about-stat">
             <span className="about-stat-k">▸ Off the clock</span>
             <span className="about-stat-v">
-              Reading film theory, looking up fashion trends, and losing —
-              but still playing — video games.
+              Reading film theory, looking up fashion trends, and losing · but
+              still playing · video games.
             </span>
           </div>
         </aside>
+      </div>
+
+      <div className="section-cta-row">
+        <a
+          href="#/about"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="section-cta"
+        >
+          <PixelIcon name="arrow" size={11} />
+          <span>Full bio · the longer version</span>
+          <span className="section-cta-key">↗</span>
+        </a>
       </div>
     </section>
   );

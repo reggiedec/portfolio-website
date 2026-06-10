@@ -4,7 +4,7 @@ const links = [
   { label: "reggiedecossard@gmail.com", url: "mailto:reggiedecossard@gmail.com" },
   { label: "LinkedIn", url: "https://www.linkedin.com/in/regine-decossard/" },
   { label: "GitHub", url: "https://github.com/reggiedec" },
-  { label: "Résumé (PDF)", url: asset("/Regine_Decossard_Resume.pdf") },
+  { label: "Résumé (PDF)", url: asset("/Regine_DeCossard_Resume.pdf") },
 ];
 
 export function ContactFooter() {
@@ -12,7 +12,7 @@ export function ContactFooter() {
   return (
     <footer className="contact" id="contact">
       <div className="contact-inner">
-        <p className="contact-eyebrow">— Like what you see?</p>
+        <p className="contact-eyebrow">· Like what you see?</p>
         <h2 className="contact-title">
           Drop me a <em>line.</em>
         </h2>
@@ -36,7 +36,7 @@ export function ContactFooter() {
       </div>
       <div className="contact-bottom">
         <span>
-          Designed &amp; coded by Regine Decossard. © {year}. All rights
+          Designed &amp; coded by Regine DeCossard. © {year}. All rights
           reserved.
         </span>
         <span className="contact-bottom-meta">

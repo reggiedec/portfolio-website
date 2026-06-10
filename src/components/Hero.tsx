@@ -1,75 +1,97 @@
 import { previouslyWith } from "../data/experience";
-import { PixelIcon, type IconName } from "./PixelIcon";
-
-const roles = [
-  "technical designer",
-  "creative technologist",
-  "prototype builder",
-  "HCI researcher",
-  "systems thinker",
-  "interaction designer",
-];
-
-const metaIcons: Record<"now" | "prev" | "status", IconName> = {
-  now: "diamond",
-  prev: "floppy",
-  status: "heart",
-};
+import { PixelIcon } from "./PixelIcon";
+import { asset } from "../utils/asset";
 
 export function Hero() {
   return (
     <section id="top" className="hero">
       <p className="hero-eyebrow">
-        <span className="dot" /> Now playing — Regine Decossard / 2026
+        <span className="dot" /> Portfolio · 2026 edition
         <span className="hero-eyebrow-caret">▮</span>
       </p>
 
-      <h1 className="hero-display">
-        <span className="hero-line">builds tools for the</span>
-        <span className="hero-line italic">messy seam between</span>
-        <span className="hero-line">
-          hardware, <em>software,</em>
-        </span>
-        <span className="hero-line italic">and the people stuck</span>
-        <span className="hero-line">using&nbsp;both.</span>
-      </h1>
+      <PixelName />
 
-      <Marquee items={roles} />
+      <p className="hero-tagline">
+        <em>Product designer and creative technologist, bringing ideas to
+        life.</em> I love building <span className="highlight">stories</span>,
+        making <span className="highlight">games</span>, and creating products
+        that have a real, tangible impact on people. Currently completing my{" "}
+        <span className="highlight">MHCI at Carnegie Mellon</span>.
+      </p>
+
+      <div className="hero-actions">
+        <a
+          href={asset("/Regine_DeCossard_Resume.pdf")}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="game-btn game-btn-primary"
+        >
+          <span className="game-btn-shine" aria-hidden />
+          <span className="game-btn-icon" aria-hidden>
+            <PixelIcon name="floppy" size={14} />
+          </span>
+          <span className="game-btn-label">Press start · résumé</span>
+          <span className="game-btn-meta" aria-hidden>↵</span>
+        </a>
+        <a href="#work" className="game-btn">
+          <span className="game-btn-shine" aria-hidden />
+          <span className="game-btn-icon" aria-hidden>
+            <PixelIcon name="controller" size={14} />
+          </span>
+          <span className="game-btn-label">View work</span>
+          <span className="game-btn-meta" aria-hidden>↓</span>
+        </a>
+        <a href="mailto:reggiedecossard@gmail.com" className="game-btn">
+          <span className="game-btn-shine" aria-hidden />
+          <span className="game-btn-icon" aria-hidden>
+            <PixelIcon name="heart" size={14} />
+          </span>
+          <span className="game-btn-label">Say hi</span>
+          <span className="game-btn-meta" aria-hidden>→</span>
+        </a>
+      </div>
+
+      <p className="hero-keyhint">
+        <span className="keycap">A</span> to enter a project ·{" "}
+        <span className="keycap">M</span> for level select
+      </p>
 
       <div className="hero-meta">
         <div className="hero-meta-block">
           <p className="meta-label">
-            <PixelIcon name={metaIcons.now} size={10} className="meta-label-icon" /> Currently
+            <PixelIcon name="diamond" size={10} className="meta-label-icon" /> Currently
           </p>
           <p className="meta-body">
-            M.S. Human-Computer Interaction at Carnegie Mellon. Leading
-            technical design on a steel-yard ERP capstone (aSa). Researching
-            generative AI for radiology training at DIG. Game research on
-            Terratopia inside Prof. Laurie Heller's Auditory Lab.
+            <em>MHCI</em> at Carnegie Mellon. Leading the{" "}
+            <span className="highlight">aSa</span> capstone, building{" "}
+            <span className="highlight">Terratopia</span> in the Auditory Lab,
+            and shipping a <span className="highlight">CHI PLAY '26</span>{" "}
+            paper on transformational games for design education.
           </p>
         </div>
         <div className="hero-meta-block">
           <p className="meta-label">
-            <PixelIcon name={metaIcons.prev} size={10} className="meta-label-icon" /> Previously
+            <PixelIcon name="floppy" size={10} className="meta-label-icon" /> Previously
           </p>
           <ul className="prev-list">
             {previouslyWith.map((p) => (
               <li key={p.org}>
                 <span className="prev-org">{p.org}</span>
-                {p.detail && <span className="prev-detail">— {p.detail}</span>}
+                {p.detail && <span className="prev-detail">· {p.detail}</span>}
               </li>
             ))}
           </ul>
         </div>
         <div className="hero-meta-block">
           <p className="meta-label">
-            <PixelIcon name={metaIcons.status} size={10} className="meta-label-icon" /> Status
+            <PixelIcon name="heart" size={10} className="meta-label-icon" /> Status
           </p>
           <p className="meta-body">
-            Pittsburgh + NYC. Building, prototyping, breaking things on purpose.
-            <br />
-            Available for full-time HCI / product / creative-tech roles starting
-            August 2026.
+            Pittsburgh + NYC. Building, prototyping,{" "}
+            <span className="highlight">breaking things on purpose</span>.
+            Available for HCI / product / creative-tech roles starting{" "}
+            <em>Aug 2026</em>.
           </p>
         </div>
       </div>
@@ -77,15 +99,25 @@ export function Hero() {
   );
 }
 
-function Marquee({ items }: { items: string[] }) {
-  const track = [...items, ...items, ...items];
+/**
+ * Hero name in a chunky 8-bit display face (Press Start 2P).
+ * Each letter drops in on a small stagger so the title still has motion,
+ * just enough "gamey" without an animated character buzzing around.
+ */
+function PixelName() {
+  const name = "Regine DeCossard";
+  const letters = Array.from(name);
   return (
-    <div className="marquee" aria-hidden="true">
-      <div className="marquee-track">
-        {track.map((item, i) => (
-          <span key={i} className="marquee-item">
-            <span className="marquee-word italic">{item}</span>
-            <span className="marquee-sep">✦</span>
+    <div className="pixel-name" aria-label={name}>
+      <div className="pixel-name-row">
+        {letters.map((ch, i) => (
+          <span
+            key={`${ch}-${i}`}
+            className={`pn-letter ${ch === " " ? "pn-space" : ""}`}
+            style={{ animationDelay: `${i * 0.06}s` }}
+            aria-hidden
+          >
+            {ch === " " ? "\u00A0" : ch}
           </span>
         ))}
       </div>

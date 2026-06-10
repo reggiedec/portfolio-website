@@ -5,7 +5,20 @@ import { ExperienceSection } from "./components/ExperienceSection";
 import { AboutSection } from "./components/AboutSection";
 import { ContactFooter } from "./components/ContactFooter";
 import { HUD } from "./components/HUD";
+import { PixelIcon } from "./components/PixelIcon";
 import "./App.css";
+
+function Sparkle() {
+  return (
+    <div className="sparkle-row" aria-hidden>
+      <span className="sparkle-line" />
+      <PixelIcon name="diamond" size={10} className="sparkle-icon" />
+      <PixelIcon name="star" size={10} className="sparkle-icon sparkle-icon-soft" />
+      <PixelIcon name="diamond" size={10} className="sparkle-icon" />
+      <span className="sparkle-line" />
+    </div>
+  );
+}
 
 function App() {
   return (
@@ -13,25 +26,15 @@ function App() {
       <Nav />
       <main className="page-main">
         <Hero />
-        <Divider label="Selected Work" />
+        <Sparkle />
         <WorkSection />
-        <Divider label="Experience" />
+        <Sparkle />
         <ExperienceSection />
-        <Divider label="About" />
+        <Sparkle />
         <AboutSection />
       </main>
       <ContactFooter />
       <HUD />
-    </div>
-  );
-}
-
-function Divider({ label }: { label: string }) {
-  return (
-    <div className="divider" role="separator">
-      <span className="divider-rule" />
-      <span className="divider-label">§ {label}</span>
-      <span className="divider-rule" />
     </div>
   );
 }

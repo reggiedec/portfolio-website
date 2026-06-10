@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { LevelSelectOverlay } from "./LevelSelectOverlay";
+import { PixelIcon } from "./PixelIcon";
 
 const sections = [
-  { id: "work", label: "Work" },
-  { id: "experience", label: "Experience" },
-  { id: "about", label: "About" },
+  { path: "/work", label: "Work" },
+  { path: "/experience", label: "Experience" },
+  { path: "/about", label: "About" },
 ];
 
 export function Nav() {
   const [time, setTime] = useState<string>("");
+  const [open, setOpen] = useState(true);
+  const [mapOpen, setMapOpen] = useState(false);
 
   useEffect(() => {
     const tick = () => {
@@ -24,27 +29,91 @@ export function Nav() {
     return () => clearInterval(id);
   }, []);
 
-  return (
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement | null;
+      const isTyping =
+        target &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.isContentEditable);
+      if (isTyping || e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key === "m" || e.key === "M") {
+        e.preventDefault();
+        setMapOpen((v) => !v);
+      }
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, []);
+
+  const NavBody = (
     <header className="nav">
-      <a href="#top" className="nav-mark">
-        <span className="nav-mark-name">Regine Decossard</span>
+      <Link to="/" className="nav-mark">
+        <span className="nav-mark-name">Regine DeCossard</span>
         <span className="nav-mark-meta">
-          <span className="nav-pulse" /> Technical Designer · Creative Technologist
+          <span className="nav-pulse" /> Product Designer · Creative Technologist
         </span>
-      </a>
+      </Link>
       <nav className="nav-links">
         {sections.map((s, i) => (
-          <a key={s.id} href={`#${s.id}`} className="nav-link">
+          <a
+            key={s.path}
+            href={`#${s.path}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-link"
+          >
             <span className="nav-link-num">LV.{String(i + 1).padStart(2, "0")}</span>
             <span>{s.label}</span>
           </a>
         ))}
+        <button
+          type="button"
+          className="nav-link nav-link-map"
+          onClick={() => setMapOpen(true)}
+          aria-label="Open level select map"
+        >
+          <span className="nav-link-num" aria-hidden>
+            <PixelIcon name="diamond" size={10} />
+          </span>
+          <span>Map</span>
+          <span className="nav-link-key" aria-hidden>M</span>
+        </button>
         <a href="mailto:reggiedecossard@gmail.com" className="nav-link nav-link-cta">
           <span className="nav-link-num">↵</span>
           <span>Say hi</span>
         </a>
       </nav>
-      <div className="nav-time">{time}</div>
+      <div className="nav-right">
+        <span className="nav-time">{time}</span>
+        <button
+          type="button"
+          className="nav-close"
+          onClick={() => setOpen(false)}
+          aria-label="Close navigation"
+        >
+          ×
+        </button>
+      </div>
     </header>
+  );
+
+  return (
+    <>
+      {!open ? (
+        <button
+          type="button"
+          className="nav-handle"
+          onClick={() => setOpen(true)}
+          aria-label="Show navigation"
+        >
+          <span className="nav-pulse" /> menu
+        </button>
+      ) : (
+        NavBody
+      )}
+      <LevelSelectOverlay open={mapOpen} onClose={() => setMapOpen(false)} />
+    </>
   );
 }

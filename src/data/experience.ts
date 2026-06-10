@@ -1,5 +1,6 @@
 export interface ExperienceEntry {
-  id: string;
+  /** kebab-case slug used in `/experience/:slug` */
+  slug: string;
   role: string;
   org: string;
   location?: string;
@@ -10,44 +11,49 @@ export interface ExperienceEntry {
   link?: string;
 }
 
+export function findExperience(slug: string): ExperienceEntry | undefined {
+  return experience.find((e) => e.slug === slug);
+}
+
 export const experience: ExperienceEntry[] = [
   {
-    id: "cmu-auditory",
-    role: "Research Assistant — Auditory Lab",
+    slug: "cmu-auditory-lab",
+    role: "Research Assistant · Auditory Lab",
     org: "Carnegie Mellon University · Prof. Laurie Heller",
     location: "Pittsburgh, PA",
-    period: "Jan 2026 — present",
+    period: "Jan 2026 → present",
     blurb:
-      "Game research and Unreal development inside Prof. Laurie Heller's Auditory Lab — working on Terratopia, a VR climate game built around echolocation and audio-first storytelling.",
+      "Game research and Unreal development inside Prof. Heller's Auditory Lab · working on Terratopia, a VR climate game built around echolocation and audio-first storytelling.",
     bullets: [
       "Game-test and contribute to ongoing development cycles across tutorial, gameplay, and ending sequences.",
-      "Work in Unreal Engine, extending existing Blueprints — including implementing a runtime restart button used by the team during playtests.",
+      "Work in Unreal Engine, extending existing Blueprints · including implementing a runtime restart button used by the team during playtests.",
       "Collaborate with Portuguese students on the European Portuguese (PT-PT) localization of tutorial, narrative, and ending video.",
       "Support Prof. Heller's broader climate-games research with audio-first design feedback and structured player testing.",
     ],
     tags: ["Research", "Games", "Unreal", "VR", "Audio", "Climate"],
   },
   {
-    id: "cmu-games",
-    role: "Research Assistant — Game Researcher",
+    slug: "cmu-games",
+    role: "Research Assistant · Game Researcher",
     org: "Carnegie Mellon University",
     location: "Pittsburgh, PA",
-    period: "Jan 2026 — present",
+    period: "Jan 2026 → present",
     blurb:
-      "Leading an independent study on transformational games — measuring whether play can rewire how students relate to failure and iteration.",
+      "Leading an independent study on transformational games · measuring whether play can rewire how students relate to failure and iteration.",
     bullets: [
       "Direct the end-to-end research lifecycle: study design, IRB approval, qualitative and quantitative analysis.",
       "Design research instruments in partnership with production and prototyping teams.",
       "Facilitate workshops translating research findings into game design decisions.",
+      "Submitted research findings and game presentation to CHI and CHI PLAY.",
     ],
-    tags: ["Research", "Games", "Education"],
+    tags: ["Research", "Games", "Education", "CHI"],
   },
   {
-    id: "cmu-dig",
-    role: "Research Assistant — GenAI for Radiology",
+    slug: "cmu-dig",
+    role: "Research Assistant · GenAI for Radiology",
     org: "CMU Data Interaction Group (DIG)",
     location: "Pittsburgh, PA",
-    period: "Dec 2025 — present",
+    period: "Dec 2025 → present",
     blurb:
       "Building human-centered GenAI tooling for radiology training as part of the MedSyn project.",
     bullets: [
@@ -57,26 +63,26 @@ export const experience: ExperienceEntry[] = [
     tags: ["GenAI", "Medical Imaging", "Python"],
   },
   {
-    id: "mbg360",
+    slug: "mbg360",
     role: "Front-End Development Intern",
     org: "MBG360",
     location: "New York, NY",
-    period: "Apr 2025 — Aug 2025",
+    period: "Apr 2025 → Aug 2025",
     blurb:
-      "Designed and shipped responsive web pages for B2B product launches across HTML/CSS/JS, Figma, Kajabi, and Squarespace.",
+      "Designed and shipped responsive web pages for B2B product launches across HTML/CSS/JS, Kajabi, and Squarespace.",
     bullets: [
       "Built custom front-end components and high-fidelity prototypes from scratch.",
       "Iterated directly with finance and marketing stakeholders.",
       "Optimized performance and accessibility, improving page load on B2B landing pages.",
     ],
-    tags: ["Front-End", "B2B", "Figma"],
+    tags: ["Front-End", "B2B", "HTML/CSS/JS"],
   },
   {
-    id: "nsfp",
+    slug: "new-school-free-press",
     role: "Web Developer",
     org: "New School Free Press",
     location: "New York, NY",
-    period: "Sep 2024 — Jun 2025",
+    period: "Sep 2024 → Jun 2025",
     blurb:
       "Revamped the student newspaper's site and designed bespoke thematic sections for individual issues.",
     bullets: [
@@ -87,11 +93,11 @@ export const experience: ExperienceEntry[] = [
     tags: ["Editorial", "Web", "Design"],
   },
   {
-    id: "whitney",
+    slug: "whitney",
     role: "Digital Content Intern",
     org: "Whitney Museum of American Art",
     location: "New York, NY",
-    period: "Sep 2024 — Dec 2024",
+    period: "Sep 2024 → Dec 2024",
     blurb:
       "Produced short-form video and digital assets for the Whitney's web and social channels.",
     bullets: [
@@ -102,20 +108,20 @@ export const experience: ExperienceEntry[] = [
     tags: ["Video", "Editorial", "Museum"],
   },
   {
-    id: "met",
+    slug: "met",
     role: "Digital Intern",
     org: "The Metropolitan Museum of Art",
     location: "New York, NY",
-    period: "Sep 2023 — Dec 2023",
+    period: "Sep 2023 → Dec 2023",
     blurb:
-      "Worked across CMS migration, video archival, and live exhibition support — including the Jacolby Satterwhite Great Hall installation.",
+      "Digital intern on the Met's content team · contributed to Jacolby Satterwhite's Great Hall commission, Connections, and Perspectives.",
     bullets: [
-      "Orchestrated content migration to a new CMS for accessibility and editorial efficiency.",
-      "Ran QA on a high-volume video backlog and archived the Connections series.",
-      "Edited and mixed broadcast/film audio for digital publication.",
-      "Contributed to the Jacolby Satterwhite Great Hall exhibition with interaction-design thinking.",
+      "Contributed digital production support for Jacolby Satterwhite's Great Hall video commission · including audio edits and asset prep.",
+      "Worked on Connections · the editorial series surfacing unexpected ties between works across the collection.",
+      "Edited and mixed broadcast and film audio for pieces published through the Perspectives platform.",
+      "Supported end-to-end content distribution workflows across video, audio, and editorial assets.",
     ],
-    tags: ["Museum", "CMS", "Video", "Interaction"],
+    tags: ["Editorial", "Museum", "Audio", "Digital Content"],
   },
 ];
 
@@ -125,7 +131,7 @@ export interface Affiliation {
 }
 
 export const previouslyWith: Affiliation[] = [
-  { org: "Carnegie Mellon University", detail: "MHCI · DIG · ScottyLabs" },
+  { org: "Carnegie Mellon University", detail: "MHCI · DIG · Auditory Lab · ScottyLabs" },
   { org: "The Metropolitan Museum of Art" },
   { org: "Whitney Museum of American Art" },
   { org: "MBG360" },
@@ -144,21 +150,67 @@ export const education: Education[] = [
   {
     school: "Carnegie Mellon University",
     degree: "M.S., Human-Computer Interaction",
-    period: "Aug 2025 — Aug 2026",
+    period: "Aug 2025 → Aug 2026",
     notes: ["ScottyLabs Designer", "TartanHacks Organizer & Judge", "Dean's List"],
   },
   {
     school: "Parsons School of Design",
-    degree: "B.B.A., Business Administration",
-    period: "Aug 2021 — May 2025",
-    notes: ["Minor: Creative Coding & Communication Design", "Dean's List 2021–2025"],
+    degree: "B.B.A., Business Administration · Minor: Creative Coding & Communication Design",
+    period: "Aug 2021 → May 2025",
+    notes: ["Dean's List 2021–2025"],
   },
 ];
 
-export const skills = {
-  design: ["Figma", "Adobe CS", "Interaction Design", "Prototyping", "Brand Strategy", "Wireframing"],
-  code: ["React", "TypeScript", "Next.js", "Python", "Java", "C/C++", "iOS/Swift", "HTML/CSS/JS"],
-  game: ["Unreal Engine", "Blueprints", "VR (Quest)", "Game Testing", "Audio Design"],
-  research: ["IRB Studies", "Contextual Inquiry", "Mixed Methods", "Data Analysis", "Jupyter", "R"],
-  systems: ["Firebase", "BigQuery", "Heroku", "Bootstrap", "Product Management"],
-};
+export interface SkillGroup {
+  label: string;
+  items: string[];
+  highlight?: boolean;
+}
+
+export const skillGroups: SkillGroup[] = [
+  {
+    label: "3D, Game Dev & Hardware",
+    items: [
+      "Unity",
+      "Unreal Engine",
+      "Three.js",
+      "C#",
+      "ROS / ROS2",
+      "Arduino",
+      "Raspberry Pico",
+      "PCB Design",
+      "Physical Computing",
+    ],
+  },
+  {
+    label: "Design & Prototyping",
+    items: [
+      "UI / UX Design",
+      "Interaction Design",
+      "Wireframing",
+      "Brand Strategy",
+      "Product Design",
+      "AI Tools",
+    ],
+  },
+  {
+    label: "Front-End / Web",
+    items: ["HTML / CSS", "JavaScript", "React", "Next.js", "Bootstrap", "jQuery"],
+  },
+  {
+    label: "Data, AI & Analysis",
+    items: [
+      "Python",
+      "R",
+      "BigQuery",
+      "Jupyter",
+      "Generative AI",
+      "Claude / Claude Code",
+      "Data Analysis",
+    ],
+  },
+  {
+    label: "Programming",
+    items: ["Java", "C / C++", "iOS / Swift"],
+  },
+];
