@@ -50,9 +50,12 @@ export function Nav() {
   const NavBody = (
     <header className="nav">
       <Link to="/" className="nav-mark">
-        <span className="nav-mark-name">Regine DeCossard</span>
+        <span className="nav-mark-brand">
+          <PixelIcon name="floppy" size={13} className="nav-mark-icon" ariaLabel="Save file" />
+          <span className="nav-mark-name">Regine DeCossard</span>
+        </span>
         <span className="nav-mark-meta">
-          <span className="nav-pulse" /> Design Technologist · Creative Technologist · AI Prototyper
+          Design Technologist · Creative Technologist · AI Prototyper
         </span>
       </Link>
       <nav className="nav-links">
@@ -102,7 +105,8 @@ export function Nav() {
           onClick={() => setOpen(true)}
           aria-label="Show navigation"
         >
-          <span className="nav-pulse" /> menu
+          <PixelIcon name="floppy" size={11} className="nav-mark-icon" />
+          menu
         </button>
       ) : (
         NavBody
