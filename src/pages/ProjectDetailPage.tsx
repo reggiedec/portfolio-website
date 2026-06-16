@@ -92,6 +92,24 @@ export function ProjectDetailPage() {
             </div>
           ) : null}
 
+          {project.poster && (
+            <div className="detail-media detail-media-poster">
+              <a
+                href={asset(project.posterPdf ?? project.poster)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="detail-poster-link"
+              >
+                <img
+                  src={asset(project.poster)}
+                  alt={`${project.title} capstone poster`}
+                  className="detail-poster"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+          )}
+
           {project.images && project.images.length > 1 && (
             <div className="detail-gallery">
               {project.images.slice(1).map((src) => {
@@ -159,13 +177,19 @@ export function ProjectDetailPage() {
               <div className="detail-meta-block">
                 <p className="meta-label">Links</p>
                 <ul className="detail-links">
-                  {project.links.map((l) => (
+                  {project.links.map((l) => {
+                    const href =
+                      l.url.startsWith("http://") || l.url.startsWith("https://")
+                        ? l.url
+                        : asset(l.url);
+                    return (
                     <li key={l.url}>
-                      <a href={l.url} target="_blank" rel="noopener noreferrer" className="detail-link">
+                      <a href={href} target="_blank" rel="noopener noreferrer" className="detail-link">
                         {l.label} <span aria-hidden>↗</span>
                       </a>
                     </li>
-                  ))}
+                    );
+                  })}
                 </ul>
               </div>
             )}

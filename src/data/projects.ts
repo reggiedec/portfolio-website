@@ -44,6 +44,10 @@ export interface Project {
   image?: string;
   /** optional gallery of additional stills shown on the detail page */
   images?: string[];
+  /** capstone / presentation poster shown below hero media */
+  poster?: string;
+  /** optional PDF for the poster link */
+  posterPdf?: string;
   tags: string[];
   /** key tags to highlight on the home card (max 3) */
   highlightTags?: string[];
@@ -391,8 +395,12 @@ export const projects: Project[] = [
       "A blueprint for supply chain transparency in hospitality textiles, presented as a final Parsons capstone.",
     tags: ["Strategic Design", "Sustainability", "Systems", "Supply Chain"],
     highlightTags: ["Strategic Design", "Sustainability"],
+    video: "/videos/chilewich.mp4",
+    poster: "/images/chilewich-poster.png",
+    posterPdf: "/documents/chilewich-poster.pdf",
     links: [
       { label: "Capstone microsite", url: "https://philm755.wixsite.com/chilewichcapstone" },
+      { label: "Capstone poster (PDF)", url: "/documents/chilewich-poster.pdf" },
     ],
     icon: "leaf",
   },

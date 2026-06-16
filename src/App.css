@@ -1864,6 +1864,21 @@
   display: block;
 }
 
+.detail-media-poster {
+  margin-top: 1.25rem;
+}
+
+.detail-poster-link {
+  display: block;
+}
+
+.detail-poster {
+  width: 100%;
+  display: block;
+  object-fit: contain;
+  background: var(--paper);
+}
+
 .detail-body {
   display: grid;
   grid-template-columns: 1fr;
