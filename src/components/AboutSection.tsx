@@ -15,8 +15,10 @@ export function AboutSection() {
         <div className="about-prose">
           <p className="about-lede">
             Hi, I'm <em>Regine DeCossard</em>. I'm a{" "}
-            <span className="highlight">product designer</span> and{" "}
-            <span className="highlight">creative technologist</span>, and I{" "}
+            <span className="highlight">design technologist</span> /{" "}
+            <span className="highlight">UX engineer</span>,{" "}
+            <span className="highlight">creative technologist</span>, and{" "}
+            <span className="highlight">AI interaction prototyper</span>, and I{" "}
             <em>bring ideas to life</em>.
           </p>
           <p>
@@ -43,7 +45,7 @@ export function AboutSection() {
           <div className="about-stat">
             <span className="about-stat-k">▸ Class</span>
             <span className="about-stat-v">
-              Technical Designer · Creative Technologist · HCI Researcher.
+              Design Technologist / UX Engineer · Creative Technologist · AI Interaction Prototyper.
             </span>
           </div>
           <div className="about-stat">
@@ -56,9 +58,9 @@ export function AboutSection() {
           <div className="about-stat">
             <span className="about-stat-k">▸ Next</span>
             <span className="about-stat-v">
-              Open to <span className="highlight">product design</span>,{" "}
-              <span className="highlight">HCI research</span>, and{" "}
-              <span className="highlight">human-AI</span> roles starting{" "}
+              Open to <span className="highlight">design technologist</span>,{" "}
+              <span className="highlight">UX engineer</span>, and{" "}
+              <span className="highlight">AI interaction</span> roles starting{" "}
               <em>August 2026</em>.
             </span>
           </div>

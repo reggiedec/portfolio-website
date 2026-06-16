@@ -52,7 +52,7 @@ export function Nav() {
       <Link to="/" className="nav-mark">
         <span className="nav-mark-name">Regine DeCossard</span>
         <span className="nav-mark-meta">
-          <span className="nav-pulse" /> Product Designer · Creative Technologist
+          <span className="nav-pulse" /> Design Technologist · Creative Technologist · AI Prototyper
         </span>
       </Link>
       <nav className="nav-links">

@@ -13,10 +13,11 @@ export function Hero() {
       <PixelName />
 
       <p className="hero-tagline">
-        <em>Product designer and creative technologist, bringing ideas to
-        life.</em> I love building <span className="highlight">stories</span>,
-        making <span className="highlight">games</span>, and creating products
-        that have a real, tangible impact on people. Currently completing my{" "}
+        <em>Design technologist / UX engineer · creative technologist · AI
+        interaction prototyper, bringing ideas to life.</em> I love building{" "}
+        <span className="highlight">stories</span>, making{" "}
+        <span className="highlight">games</span>, and creating products that
+        have a real, tangible impact on people. Currently completing my{" "}
         <span className="highlight">MHCI at Carnegie Mellon</span>.
       </p>
 
@@ -90,8 +91,8 @@ export function Hero() {
           <p className="meta-body">
             Pittsburgh + NYC. Building, prototyping,{" "}
             <span className="highlight">breaking things on purpose</span>.
-            Available for HCI / product / creative-tech roles starting{" "}
-            <em>Aug 2026</em>.
+            Available for design technologist / UX engineer / human-AI roles
+            starting <em>Aug 2026</em>.
           </p>
         </div>
       </div>
