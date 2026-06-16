@@ -39,17 +39,6 @@
   line-height: 1.1;
 }
 
-.nav-mark-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-}
-
-.nav-mark-icon {
-  color: var(--accent);
-  flex-shrink: 0;
-}
-
 .nav-mark-name {
   font-family: var(--font-serif);
   font-style: italic;
