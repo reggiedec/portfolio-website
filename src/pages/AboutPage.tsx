@@ -129,21 +129,17 @@ export function AboutPage() {
                 <li>
                   <a
                     href={asset("/Regine_DeCossard_Resume.pdf")}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="detail-link"
                   >
-                    Résumé (PDF) <span aria-hidden>↗</span>
+                    Résumé (PDF) <span aria-hidden>→</span>
                   </a>
                 </li>
                 <li>
                   <a
                     href="https://www.linkedin.com/in/reginedecossard"
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="detail-link"
                   >
-                    LinkedIn <span aria-hidden>↗</span>
+                    LinkedIn <span aria-hidden>→</span>
                   </a>
                 </li>
               </ul>

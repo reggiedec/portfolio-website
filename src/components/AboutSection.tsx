@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { SectionHeader } from "./WorkSection";
 import { PixelIcon } from "./PixelIcon";
 
@@ -7,7 +8,7 @@ export function AboutSection() {
       <SectionHeader
         eyebrow="LV.03 / About"
         title="Who"
-        titleItalic="this is"
+        titleItalic="I am"
         icon="speech"
       />
 
@@ -75,16 +76,11 @@ export function AboutSection() {
       </div>
 
       <div className="section-cta-row">
-        <a
-          href="#/about"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="section-cta"
-        >
+        <Link to="/about" className="section-cta">
           <PixelIcon name="arrow" size={11} />
           <span>Full bio · the longer version</span>
-          <span className="section-cta-key">↗</span>
-        </a>
+          <span className="section-cta-key">→</span>
+        </Link>
       </div>
     </section>
   );

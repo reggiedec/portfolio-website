@@ -57,16 +57,10 @@ export function Nav() {
       </Link>
       <nav className="nav-links">
         {sections.map((s, i) => (
-          <a
-            key={s.path}
-            href={`#${s.path}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nav-link"
-          >
+          <Link key={s.path} to={s.path} className="nav-link">
             <span className="nav-link-num">LV.{String(i + 1).padStart(2, "0")}</span>
             <span>{s.label}</span>
-          </a>
+          </Link>
         ))}
         <button
           type="button"

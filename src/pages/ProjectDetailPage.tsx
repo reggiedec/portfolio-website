@@ -96,8 +96,6 @@ export function ProjectDetailPage() {
             <div className="detail-media detail-media-poster">
               <a
                 href={asset(project.posterPdf ?? project.poster)}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="detail-poster-link"
               >
                 <img
@@ -184,8 +182,8 @@ export function ProjectDetailPage() {
                         : asset(l.url);
                     return (
                     <li key={l.url}>
-                      <a href={href} target="_blank" rel="noopener noreferrer" className="detail-link">
-                        {l.label} <span aria-hidden>↗</span>
+                      <a href={href} className="detail-link">
+                        {l.label} <span aria-hidden>→</span>
                       </a>
                     </li>
                     );

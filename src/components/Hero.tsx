@@ -10,6 +10,20 @@ export function Hero() {
         <span className="hero-eyebrow-caret">▮</span>
       </p>
 
+      <div className="hero-top-links">
+        <a
+          href="https://github.com/reggiedec"
+          className="hero-top-link"
+        >
+          <PixelIcon name="floppy" size={11} className="hero-top-link-icon" />
+          GitHub
+        </a>
+        <a href={asset("/Regine_DeCossard_Resume.pdf")} className="hero-top-link">
+          <PixelIcon name="floppy" size={11} className="hero-top-link-icon" />
+          Résumé
+        </a>
+      </div>
+
       <PixelName />
 
       <p className="hero-tagline">
@@ -22,20 +36,7 @@ export function Hero() {
       </p>
 
       <div className="hero-actions">
-        <a
-          href={asset("/Regine_DeCossard_Resume.pdf")}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="game-btn game-btn-primary"
-        >
-          <span className="game-btn-shine" aria-hidden />
-          <span className="game-btn-icon" aria-hidden>
-            <PixelIcon name="floppy" size={14} />
-          </span>
-          <span className="game-btn-label">Press start · résumé</span>
-          <span className="game-btn-meta" aria-hidden>↵</span>
-        </a>
-        <a href="#work" className="game-btn">
+        <a href="#work" className="game-btn game-btn-primary">
           <span className="game-btn-shine" aria-hidden />
           <span className="game-btn-icon" aria-hidden>
             <PixelIcon name="controller" size={14} />

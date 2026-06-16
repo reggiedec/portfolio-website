@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
 import { experience } from "../data/experience";
 import { PixelIcon } from "./PixelIcon";
@@ -22,10 +23,8 @@ export function LevelSelectGrids({ onTileClick }: { onTileClick?: () => void }) 
         <ul className="level-select-grid">
           {projects.map((p) => (
             <li key={p.slug}>
-              <a
-                href={`#/work/${p.slug}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to={`/work/${p.slug}`}
                 className="level-tile"
                 onClick={onTileClick}
               >
@@ -40,7 +39,7 @@ export function LevelSelectGrids({ onTileClick }: { onTileClick?: () => void }) 
                 <p className="level-tile-title">{p.title}</p>
                 {p.subtitle && <p className="level-tile-sub">{p.subtitle}</p>}
                 <p className="level-tile-year">{p.year}</p>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -53,10 +52,8 @@ export function LevelSelectGrids({ onTileClick }: { onTileClick?: () => void }) 
         <ul className="level-select-grid">
           {experience.map((e, i) => (
             <li key={e.slug}>
-              <a
-                href={`#/experience/${e.slug}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to={`/experience/${e.slug}`}
                 className="level-tile"
                 onClick={onTileClick}
               >
@@ -71,7 +68,7 @@ export function LevelSelectGrids({ onTileClick }: { onTileClick?: () => void }) 
                 <p className="level-tile-title">{e.role}</p>
                 <p className="level-tile-sub">{e.org}</p>
                 <p className="level-tile-year">{e.period}</p>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

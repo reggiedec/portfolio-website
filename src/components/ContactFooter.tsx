@@ -21,8 +21,6 @@ export function ContactFooter() {
             <li key={l.url}>
               <a
                 href={l.url}
-                target={l.url.startsWith("mailto") ? undefined : "_blank"}
-                rel="noopener noreferrer"
                 className="contact-link"
               >
                 <span className="contact-link-label">{l.label}</span>

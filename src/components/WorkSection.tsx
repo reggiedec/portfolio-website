@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
   featuredProjects,
   projects,
@@ -8,7 +9,31 @@ import { asset } from "../utils/asset";
 import { PixelIcon, type IconName } from "./PixelIcon";
 
 export function WorkSection() {
+  const navigate = useNavigate();
+  const hoveredSlug = useRef<string | null>(null);
   const moreCount = projects.length - featuredProjects.length;
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement | null;
+      const isTyping =
+        target &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.isContentEditable);
+      if (isTyping || e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key !== "a" && e.key !== "A") return;
+
+      const slug = hoveredSlug.current ?? featuredProjects[0]?.slug;
+      if (!slug) return;
+
+      e.preventDefault();
+      navigate(`/work/${slug}`);
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, [navigate]);
+
   return (
     <section id="work" className="section section-work">
       <SectionHeader
@@ -20,46 +45,53 @@ export function WorkSection() {
           <>
             A capstone, a VR climate game, and an autonomous-racing rig.
             <br />
-            Click in for the long version · opens in a new tab.
+            Click in for the long version.
           </>
         }
       />
 
       <ul className="work-grid">
         {featuredProjects.map((p) => (
-          <WorkCard key={p.slug} project={p} />
+          <WorkCard
+            key={p.slug}
+            project={p}
+            onHover={(slug) => {
+              hoveredSlug.current = slug;
+            }}
+          />
         ))}
       </ul>
 
       <div className="section-cta-row">
-        <a
-          href="#/work"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="section-cta"
-        >
+        <Link to="/work" className="section-cta">
           <PixelIcon name="arrow" size={11} />
           <span>
             See all <strong>{projects.length}</strong> projects ·{" "}
             {moreCount} more inside
           </span>
-          <span className="section-cta-key">↗</span>
-        </a>
+          <span className="section-cta-key">→</span>
+        </Link>
       </div>
     </section>
   );
 }
 
-function WorkCard({ project }: { project: Project }) {
-  const href = `#/work/${project.slug}`;
+function WorkCard({
+  project,
+  onHover,
+}: {
+  project: Project;
+  onHover: (slug: string | null) => void;
+}) {
   return (
-    <li className="work-card">
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="work-card-link"
-      >
+    <li
+      className="work-card"
+      onMouseEnter={() => onHover(project.slug)}
+      onMouseLeave={() => onHover(null)}
+      onFocusCapture={() => onHover(project.slug)}
+      onBlurCapture={() => onHover(null)}
+    >
+      <Link to={`/work/${project.slug}`} className="work-card-link">
         <span className="work-card-press" aria-hidden>
           <span className="work-card-press-key">A</span>
           <span className="work-card-press-label">Press to open</span>
@@ -123,10 +155,10 @@ function WorkCard({ project }: { project: Project }) {
 
           <span className="work-card-cta">
             <span>Open project</span>
-            <span className="work-card-cta-arrow" aria-hidden>↗</span>
+            <span className="work-card-cta-arrow" aria-hidden>→</span>
           </span>
         </div>
-      </a>
+      </Link>
     </li>
   );
 }

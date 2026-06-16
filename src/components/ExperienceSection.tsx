@@ -1,4 +1,5 @@
 import { experience, education, skillGroups } from "../data/experience";
+import { Link } from "react-router-dom";
 import { SectionHeader } from "./WorkSection";
 import { PixelIcon } from "./PixelIcon";
 
@@ -17,10 +18,8 @@ export function ExperienceSection() {
         {experience.map((e) => (
           <li key={e.slug} className="exp-item">
             <div className="exp-period">{e.period}</div>
-            <a
-              href={`#/experience/${e.slug}`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to={`/experience/${e.slug}`}
               className="exp-body exp-body-link"
               aria-label={`Open: ${e.role} at ${e.org}`}
             >
@@ -41,26 +40,21 @@ export function ExperienceSection() {
               )}
               <span className="exp-cta">
                 <PixelIcon name="arrow" size={10} /> Open file
-                <span className="exp-cta-key">↗</span>
+                <span className="exp-cta-key">→</span>
               </span>
-            </a>
+            </Link>
           </li>
         ))}
       </ol>
 
       <div className="section-cta-row">
-        <a
-          href="#/experience"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="section-cta"
-        >
+        <Link to="/experience" className="section-cta">
           <PixelIcon name="arrow" size={11} />
           <span>
             See all <strong>{experience.length}</strong> roles + education
           </span>
-          <span className="section-cta-key">↗</span>
-        </a>
+          <span className="section-cta-key">→</span>
+        </Link>
       </div>
 
       <div className="exp-grid">

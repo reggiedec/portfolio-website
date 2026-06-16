@@ -155,6 +155,38 @@
   display: inline-block;
 }
 
+.hero-top-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.hero-top-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  background: var(--paper-deep);
+  border: 1.5px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--accent);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.hero-top-link:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--accent);
+}
+
+.hero-top-link-icon {
+  opacity: 0.85;
+}
+
 .hero-display {
   font-family: var(--font-serif);
   font-weight: 400;

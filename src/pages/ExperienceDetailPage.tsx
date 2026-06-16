@@ -93,13 +93,8 @@ export function ExperienceDetailPage() {
                 <p className="meta-label">Link</p>
                 <ul className="detail-links">
                   <li>
-                    <a
-                      href={entry.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="detail-link"
-                    >
-                      Visit {entry.org} <span aria-hidden>↗</span>
+                    <a href={entry.link} className="detail-link">
+                      Visit {entry.org} <span aria-hidden>→</span>
                     </a>
                   </li>
                 </ul>
