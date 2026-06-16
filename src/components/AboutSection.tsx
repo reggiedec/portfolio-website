@@ -23,22 +23,10 @@ export function AboutSection() {
             <em>bring ideas to life</em>.
           </p>
           <p>
-            Simply put, I love building <em>stories</em>, making <em>games</em>,
-            and creating products that have a real, tangible impact on people.
-            I'm currently completing my <em>Master's in Human-Computer
-            Interaction</em> at Carnegie Mellon. My work lives at the
-            intersection of human-centered design and emerging technology.
-          </p>
-          <p>
-            Whether I'm engineering data pipelines for a{" "}
-            <span className="highlight">generative AI radiology platform</span>,
-            designing interactive 3D environments in{" "}
-            <span className="highlight">Unity</span>, or wiring up{" "}
-            <span className="highlight">Arduino</span> sensors for physical
-            computing projects, I thrive on getting scrappy and prototyping
-            directly in code. I'm incredibly hungry to keep learning, tackle
-            complex problems, and build intuitive experiences that{" "}
-            <em>actually matter</em>.
+            I'm finishing my <em>MHCI at Carnegie Mellon</em> — capstone delivery,
+            Auditory Lab research, and prototyping in code — and open to{" "}
+            <em>design technologist</em>, <em>UX engineer</em>, and{" "}
+            <em>AI interaction</em> roles starting <em>August 2026</em>.
           </p>
         </div>
 
@@ -59,10 +47,8 @@ export function AboutSection() {
           <div className="about-stat">
             <span className="about-stat-k">▸ Next</span>
             <span className="about-stat-v">
-              Open to <span className="highlight">design technologist</span>,{" "}
-              <span className="highlight">UX engineer</span>, and{" "}
-              <span className="highlight">AI interaction</span> roles starting{" "}
-              <em>August 2026</em>.
+              Open to design technologist, UX engineer, and AI interaction roles
+              starting <em>August 2026</em>.
             </span>
           </div>
           <div className="about-stat">
@@ -78,7 +64,7 @@ export function AboutSection() {
       <div className="section-cta-row">
         <Link to="/about" className="section-cta">
           <PixelIcon name="arrow" size={11} />
-          <span>Full bio · the longer version</span>
+          <span>Full bio · projects, origin story, contact</span>
           <span className="section-cta-key">→</span>
         </Link>
       </div>

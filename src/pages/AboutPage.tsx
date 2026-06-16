@@ -34,20 +34,20 @@ export function AboutPage() {
             <PixelIcon name="speech" size={12} /> LV.03 · About
           </p>
           <h1 className="detail-title">
-            Hi, I'm <em>Regine.</em>
+            Who <em>I am.</em>
           </h1>
           <p className="detail-sub">
-            <em>Design technologist / UX engineer · creative technologist · AI interaction prototyper · bringing ideas to life.</em>
+            <em>The long version · origin, tools, and what I'm building now.</em>
           </p>
         </section>
 
         <section className="detail-body">
           <p className="detail-lede">
-            I'm a <strong>design technologist</strong> /{" "}
-            <strong>UX engineer</strong>, <strong>creative technologist</strong>,
-            and <strong>AI interaction prototyper</strong>. Simply put, I love
-            building stories, making games, and creating products that have a
-            real, tangible impact on people.
+            Hi, I'm <strong>Regine DeCossard</strong> — a{" "}
+            <strong>design technologist</strong> / <strong>UX engineer</strong>,{" "}
+            <strong>creative technologist</strong>, and{" "}
+            <strong>AI interaction prototyper</strong> who{" "}
+            <em>brings ideas to life</em>.
           </p>
           <p className="detail-lede">
             I'm currently completing my Master's in{" "}

@@ -164,7 +164,6 @@ export const education: Education[] = [
 export interface SkillGroup {
   label: string;
   items: string[];
-  highlight?: boolean;
 }
 
 export const skillGroups: SkillGroup[] = [
@@ -188,7 +187,7 @@ export const skillGroups: SkillGroup[] = [
       "UI / UX Design",
       "Interaction Design",
       "Wireframing",
-      "Brand Strategy",
+      "Prototyping",
       "Product Design",
       "AI Tools",
     ],

@@ -1720,40 +1720,8 @@
 }
 
 /* ============================================================
-   Skills · highlight Hardware row
+   Skills · category labels + plain lists (read-only)
    ============================================================ */
-.skills-row-hot {
-  padding: 0.45rem 0.55rem;
-  margin: -0.45rem -0.55rem;
-  background: var(--accent-soft);
-  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
-  border-radius: 4px;
-}
-
-.skills-row-hot .skills-key {
-  color: var(--accent);
-}
-
-.skills-spark {
-  display: inline-block;
-  color: var(--accent-2);
-  margin-right: 0.3rem;
-  animation: spark 2.6s ease-in-out infinite;
-}
-
-@keyframes spark {
-  0%, 100% { transform: rotate(0); opacity: 1; }
-  50% { transform: rotate(15deg); opacity: 0.7; }
-}
-
-.skills-item-hot {
-  color: var(--accent);
-  font-weight: 500;
-}
-
-.skills-sep {
-  color: var(--ink-faint);
-}
 
 /* ============================================================
    Project detail page
@@ -2071,7 +2039,6 @@
   .hud-dot { animation: none; }
   .hud-caret, .hero-eyebrow-caret { animation: none; }
   .signature.is-drawn .signature-text { animation: none; fill: var(--ink); stroke-width: 0; }
-  .skills-spark { animation: none; }
   .sparkle-icon { animation: none; }
   .level-tile { transition: none; }
 }
@@ -2908,53 +2875,6 @@
   border-color: var(--accent);
   background: var(--accent-soft);
   box-shadow: 0 4px 10px color-mix(in srgb, var(--accent) 25%, transparent);
-}
-
-/* ---------- Highlight chips also react if hovered ---------- */
-.highlight {
-  transition: background 0.18s ease, color 0.18s ease;
-  cursor: default;
-}
-
-.highlight:hover {
-  background: var(--accent);
-  color: var(--paper);
-}
-
-/* ---------- Skills items: underline sweep + accent flash ---------- */
-.skills-item {
-  position: relative;
-  transition: color 0.18s ease;
-  cursor: default;
-}
-
-.skills-item::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -2px;
-  height: 1px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-
-.skills-item:hover {
-  color: var(--accent);
-}
-
-.skills-item:hover::after {
-  transform: scaleX(1);
-}
-
-.skills-item-hot:hover {
-  color: var(--accent-2);
-}
-
-.skills-item-hot:hover::after {
-  background: var(--accent-2);
 }
 
 /* ---------- Inline links: animated underline ---------- */

@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { experience, education, skillGroups } from "../data/experience";
+import { experience, education } from "../data/experience";
 import { PixelIcon } from "../components/PixelIcon";
+import { SkillsList } from "../components/SkillsList";
 import { HUD } from "../components/HUD";
 import "../App.css";
 
@@ -99,33 +100,7 @@ export function ExperienceIndexPage() {
 
           <div className="exp-card">
             <p className="meta-label">Tooling</p>
-            <dl className="skills">
-              {skillGroups.map((g) => (
-                <div
-                  key={g.label}
-                  className={`skills-row ${g.highlight ? "skills-row-hot" : ""}`}
-                >
-                  <dt className="skills-key">
-                    {g.highlight && <span className="skills-spark">★</span>}
-                    {g.label}
-                  </dt>
-                  <dd className="skills-val">
-                    {g.items.map((item, i) => (
-                      <span key={item}>
-                        {i > 0 && <span className="skills-sep"> · </span>}
-                        <span
-                          className={
-                            g.highlight ? "skills-item skills-item-hot" : "skills-item"
-                          }
-                        >
-                          {item}
-                        </span>
-                      </span>
-                    ))}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+            <SkillsList />
           </div>
         </div>
       </main>
